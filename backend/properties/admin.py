@@ -1,29 +1,24 @@
 from django.contrib import admin
-from .models import Property
+from .models import Property, PropertyImage
+
 
 
 @admin.register(Property)
 class PropertyAdmin(admin.ModelAdmin):
-    list_display = (
+
+    list_display = [
         "title",
-        "property_type",
-        "status",
+        "location",
         "price",
-        "location",
-        "created_at",
-        "updated_at",
-        "is_available",
-    )
-
-    list_filter = (
         "property_type",
         "status",
-        "is_available",
-    )
+    ]
 
-    search_fields = (
-        "title",
-        "location",
-    )
+@admin.register(PropertyImage)
+class PropertyImageAdmin(admin.ModelAdmin):
 
-    ordering = ("-created_at",)
+    list_display = [
+        "id",
+        "property",
+        "image",
+    ]

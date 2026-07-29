@@ -5,7 +5,8 @@ from .serializers import PropertySerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
 
-from rest_framework.permissions import AllowAny, IsAdminUser
+from rest_framework.permissions import AllowAny
+from .permissions import IsOwner
 
 
 # Custom filter for property search
@@ -47,30 +48,29 @@ class PropertyDetailView(generics.RetrieveAPIView):
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
     permission_classes = [AllowAny]
+    authentication_classes=[]
 
-
-
-# ADD property (Admin only)
+# ADD property
 class PropertyCreateView(generics.CreateAPIView):
 
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsOwner]
 
 
 
-# UPDATE property (Admin only)
+# UPDATE property
 class PropertyUpdateView(generics.UpdateAPIView):
 
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsOwner]
 
 
 
-# DELETE property (Admin only)
+# DELETE property
 class PropertyDeleteView(generics.DestroyAPIView):
 
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsOwner]

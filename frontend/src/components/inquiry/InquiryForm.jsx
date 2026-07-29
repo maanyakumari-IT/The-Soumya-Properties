@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createInquiry } from "../../services/inquiryService";
 
-function InquiryForm({ propertyId }) {
+function InquiryForm({ propertyId, interestedFor}) {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -23,6 +23,7 @@ function InquiryForm({ propertyId }) {
             await createInquiry({
                 ...formData,
                 property: propertyId,
+                interested_for: interestedFor
             });
 
             alert("Inquiry sent successfully!");

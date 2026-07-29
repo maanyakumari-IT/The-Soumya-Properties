@@ -31,29 +31,49 @@ function Login() {
 
         e.preventDefault();
 
+        console.log("Sending Data:", formData);
+
         try {
 
             const response = await loginUser(formData);
 
+            console.log("LOGIN SUCCESS:", response);
+
+
             localStorage.setItem(
                 "access",
-                response.data.access
+                response.access
             );
 
             localStorage.setItem(
                 "refresh",
-                response.data.refresh
+                response.refresh
             );
-
+            localStorage.setItem(
+                "user",
+                JSON.stringify(response.user)
+            );
 
             alert("🎉 Login Successful");
 
-            navigate("/");
+            if(response.user.is_owner){
+                navigate("/owner/dashboard");
+            }
+            else{
+                navigate("/");
+            }
 
 
-        } catch {
+        } catch (error) {
 
-            alert("Invalid email or password");
+            console.log(
+                "LOGIN ERROR:",
+                error.response?.data
+            );
+
+            alert(
+                JSON.stringify(error.response?.data)
+            );
 
         }
 
@@ -66,7 +86,10 @@ function Login() {
 
             <div className="auth-card">
 
-                <h2>Welcome Back</h2>
+                <h2>
+                    Welcome Back
+                </h2>
+
 
                 <p>
                     Login to The Soumya Properties and explore premium properties.
@@ -77,48 +100,70 @@ function Login() {
 
 
                     <input
+
                         type="email"
+
                         name="email"
+
                         placeholder="Email Address"
+
+                        value={formData.email}
+
                         onChange={handleChange}
+
                         required
+
                     />
 
 
                     <div className="password-box">
 
+
                         <input
+
                             type={
-                                showPassword 
-                                ? "text" 
-                                : "password"
+                                showPassword
+                                    ? "text"
+                                    : "password"
                             }
+
                             name="password"
+
                             placeholder="Password"
+
+                            value={formData.password}
+
                             onChange={handleChange}
+
                             required
+
                         />
 
 
                         <span
-                            onClick={() => 
+
+                            onClick={() =>
                                 setShowPassword(!showPassword)
                             }
+
                         >
 
                             {
-                                showPassword 
-                                ? <FaEyeSlash /> 
-                                : <FaEye />
+                                showPassword
+                                    ? <FaEyeSlash />
+                                    : <FaEye />
                             }
 
                         </span>
+
 
                     </div>
 
 
                     <button type="submit">
+
                         Login
+
                     </button>
 
 
@@ -130,7 +175,9 @@ function Login() {
                     Don't have an account?
 
                     <Link to="/register">
+
                         Register
+
                     </Link>
 
                 </div>

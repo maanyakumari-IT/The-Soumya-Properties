@@ -20,6 +20,31 @@
     margin-left:-20px;
 }
 
+.logout-btn{
+
+    background:#0d6efd;
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.logout-btn:hover{
+
+    background:#084db8;
+
+}
+
 .nav-links{
     display:flex;
     align-items:center;
@@ -1106,4 +1131,668 @@
 .auth-card h2{
     font-size:28px;
 }
+}
+
+/* ================= OWNER DASHBOARD ================= */
+
+.owner-dashboard {
+    min-height: 100vh;
+    padding: 40px;
+    background: #f5f7fb;
+}
+
+
+/* Header */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    margin-bottom: 35px;
+}
+
+
+.dashboard-header h1 {
+    font-size: 30px;
+    color: #1e293b;
+    margin: 0;
+}
+
+
+.dashboard-header button {
+    background: #b8860b;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.dashboard-header button:hover {
+    background: #8f6808;
+    transform: translateY(-2px);
+}
+
+
+
+/* Title */
+
+.owner-dashboard h2 {
+    color: #1e293b;
+    margin-bottom: 25px;
+}
+
+
+
+/* Property Grid */
+
+.property-dashboard-grid {
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+
+}
+
+
+
+/* Card */
+
+.dashboard-card {
+
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+
+}
+
+
+.dashboard-card:hover {
+
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+
+}
+
+
+
+.dashboard-card img {
+
+    width:100%;
+    height:220px;
+    object-fit:cover;
+
+}
+
+
+
+.dashboard-card h3 {
+
+    font-size:22px;
+    color:#111827;
+    padding:0 20px;
+    margin-top:20px;
+
+}
+
+
+
+.dashboard-card p {
+
+    padding:0 20px;
+    color:#64748b;
+    font-size:15px;
+
+}
+
+
+
+/* Buttons */
+
+.dashboard-card button {
+
+    margin:15px 10px 20px 20px;
+    padding:10px 22px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+
+}
+
+
+
+.dashboard-card button:first-child {
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+
+.dashboard-card button:last-child {
+
+    background:#dc2626;
+    color:white;
+
+}
+
+
+
+.dashboard-card button:hover {
+
+    opacity:0.85;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+    .owner-dashboard{
+        padding:20px;
+    }
+
+
+    .dashboard-header{
+
+        flex-direction:column;
+        gap:20px;
+        align-items:flex-start;
+
+    }
+
+
+    .property-dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ================= EDIT PROPERTY PAGE ================= */
+
+.edit-property-page {
+
+    min-height: 100vh;
+
+    padding: 50px 20px;
+
+    background: #f5f7fb;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+}
+
+
+
+
+.edit-property-card {
+
+    width: 100%;
+
+    max-width: 750px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+}
+
+
+
+
+.edit-property-card h1 {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    font-size: 32px;
+
+    color: #1f2937;
+
+}
+
+
+
+
+.edit-property-card form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+
+
+.edit-property-card label {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #374151;
+
+    margin-top: 8px;
+
+}
+
+
+
+
+.edit-property-card input,
+.edit-property-card textarea,
+.edit-property-card select {
+
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+    background: #fff;
+
+}
+
+
+
+
+
+.edit-property-card textarea {
+
+    height: 130px;
+
+    resize: vertical;
+
+}
+
+
+
+
+
+.edit-property-card input:focus,
+.edit-property-card textarea:focus,
+.edit-property-card select:focus {
+
+
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+
+}
+
+
+
+
+/* File Upload */
+
+.edit-property-card input[type="file"] {
+
+
+    padding: 12px;
+
+    background: #f9fafb;
+
+    cursor: pointer;
+
+}
+
+
+
+
+
+/* Update Button */
+
+.edit-property-card button {
+
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+
+
+.edit-property-card button:hover {
+
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+
+}
+
+
+
+
+
+/* Loading */
+
+.loading-text {
+
+
+    min-height: 80vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    color: #374151;
+
+}
+
+
+
+
+
+
+/* ================= MOBILE ================= */
+
+
+@media(max-width:768px){
+
+
+    .edit-property-page{
+
+        padding:30px 15px;
+
+    }
+
+
+
+    .edit-property-card{
+
+
+        padding:25px 20px;
+
+        border-radius:14px;
+
+    }
+
+
+
+    .edit-property-card h1{
+
+
+        font-size:26px;
+
+    }
+
+
+
+    .edit-property-card input,
+    .edit-property-card textarea,
+    .edit-property-card select{
+
+
+        font-size:14px;
+
+        padding:12px;
+
+    }
+
+
+
+    .edit-property-card button{
+
+
+        font-size:15px;
+
+    }
+
+
+}
+
+/* ================= ADD PROPERTY PAGE ================= */
+
+.add-property-page{
+
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:50px 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+}
+
+
+
+.add-property-card{
+
+    width:100%;
+    max-width:750px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.08);
+
+}
+
+
+
+.add-property-card h2{
+
+    text-align:center;
+
+    font-size:32px;
+
+    color:#1e293b;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.add-property-card form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+.add-property-card input,
+.add-property-card textarea,
+.add-property-card select{
+
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    outline:none;
+
+    box-sizing:border-box;
+
+}
+
+
+
+.add-property-card textarea{
+
+    height:140px;
+
+    resize:none;
+
+}
+
+
+
+.add-property-card input:focus,
+.add-property-card textarea:focus,
+.add-property-card select:focus{
+
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 8px rgba(37,99,235,0.2);
+
+}
+
+
+
+
+/* File Upload */
+
+
+.add-property-card input[type="file"]{
+
+
+    background:#f8fafc;
+
+    padding:12px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+/* Submit Button */
+
+
+.add-property-card button{
+
+
+    margin-top:15px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#0d6efd;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.add-property-card button:hover{
+
+    background:#084298;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+
+@media(max-width:768px){
+
+
+    .add-property-page{
+
+        padding:30px 15px;
+
+    }
+
+
+    .add-property-card{
+
+        padding:25px 20px;
+
+    }
+
+
+    .add-property-card h2{
+
+        font-size:26px;
+
+    }
+
+
 }

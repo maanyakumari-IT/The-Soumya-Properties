@@ -9,6 +9,7 @@ function PropertyDetails() {
 
     const [property, setProperty] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [selectedImage, setSelectedImage] = useState("");
 
     useEffect(() => {
 
@@ -19,6 +20,12 @@ function PropertyDetails() {
                 const data = await getProperty(id);
 
                 setProperty(data);
+
+                if (data.image) {
+                    setSelectedImage(data.image);
+                } else if (data.images && data.images.length > 0) {
+                    setSelectedImage(data.images[0].image);
+                }
 
             } catch (error) {
 
@@ -49,13 +56,54 @@ function PropertyDetails() {
                 <div className="property-image-section">
 
                     <img
+                        className="main-property-image"
                         src={
-                            property.image
-                                ? property.image
+                            selectedImage
+                                ? selectedImage
                                 : "https://via.placeholder.com/900x600"
                         }
                         alt={property.title}
                     />
+
+                    <div className="gallery-images">
+
+                        {property.image && (
+
+                            <img
+                                src={property.image}
+                                alt="Main"
+                                className={
+                                    selectedImage === property.image
+                                        ? "active-image"
+                                        : ""
+                                }
+                                onClick={() =>
+                                    setSelectedImage(property.image)
+                                }
+                            />
+
+                        )}
+
+                        {property.images &&
+                            property.images.map((img) => (
+
+                                <img
+                                    key={img.id}
+                                    src={img.image}
+                                    alt="Gallery"
+                                    className={
+                                        selectedImage === img.image
+                                            ? "active-image"
+                                            : ""
+                                    }
+                                    onClick={() =>
+                                        setSelectedImage(img.image)
+                                    }
+                                />
+
+                            ))}
+
+                    </div>
 
                 </div>
 
@@ -116,7 +164,7 @@ function PropertyDetails() {
 
                         <h2>Mr. Rajesh Srivastava</h2>
 
-                        <p>📞 +91 9031608729</p>
+                        <p>📞 +91 7004127519</p>
 
                         <p>📧 rajesh29@gmail.com</p>
 
@@ -128,9 +176,8 @@ function PropertyDetails() {
 
                         <div className="owner-buttons">
 
-                            <a
-                                href="tel:+919031608729"
-                            >
+                            <a href="tel:+7004127519">
+
                                 <button className="call-btn">
 
                                     Call Now
@@ -140,7 +187,19 @@ function PropertyDetails() {
                             </a>
 
                             <a
-                                href="https://wa.me/919031608729"
+                                href={`https://wa.me/7004127519?text=${encodeURIComponent(
+                                    `Hello Mr. Rajesh Srivastava,
+
+I am interested in the following property:
+
+🏠 ${property.title}
+
+📍 Location: ${property.location}
+
+💰 Price: ₹${property.price}
+
+Please contact me regarding this property.`
+                                )}`}
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -163,7 +222,10 @@ function PropertyDetails() {
 
             <div className="inquiry-section">
 
-                <InquiryForm propertyId={property.id} />
+                <InquiryForm
+                    propertyId={property.id}
+                    interestedFor={property.status}
+                />
 
             </div>
 
