@@ -13,9 +13,10 @@ SECRET_KEY = "django-insecure-3x5720^uh2_1u5%!($1uha20ud@8dz6axu=*&tj-p@!+!#)3v^
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
-    "127.0.0.1",
+    "the-soumya-properties.onrender.com",
+    "the-soumya-properties.vercel.app",
     "localhost",
-    ".onrender.com",
+    "127.0.0.1",
 ]
 
 # Applications
@@ -139,6 +140,7 @@ AUTH_USER_MODEL = "accounts.User"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://the-soumya-properties.vercel.app",
 ]
 
 # Email
