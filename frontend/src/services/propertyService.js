@@ -1,32 +1,19 @@
 import api from "./api";
-
-
 export const getProperties = async (params = {}) => {
-
     const response = await api.get("properties/", {
         params,
     });
-
     return response.data;
-
 };
 
-
-
 export const getProperty = async (id) => {
-
     const response = await api.get(
         `properties/${id}/`
     );
-
     return response.data;
-
 };
 
-
-
 export const createProperty = async (formData) => {
-
     const response = await api.post(
         "properties/create/",
         formData,
@@ -38,15 +25,10 @@ export const createProperty = async (formData) => {
             }
         }
     );
-
     return response.data;
-
 };
 
-
-
 export const updateProperty = async (id, formData) => {
-
     const response = await api.put(
         `properties/update/${id}/`,
         formData,
@@ -58,15 +40,10 @@ export const updateProperty = async (id, formData) => {
             }
         }
     );
-
     return response.data;
-
 };
 
-
-
 export const deleteProperty = async (id) => {
-
     const response = await api.delete(
         `properties/delete/${id}/`,
         {
@@ -76,7 +53,5 @@ export const deleteProperty = async (id) => {
             }
         }
     );
-
     return response.data;
-
 };

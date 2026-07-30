@@ -1,18 +1,22 @@
 import axios from "axios";
+
 const api = axios.create({
-    baseURL: "https://the-soumya-properties.onrender.com/api/"
+    baseURL: "https://the-soumya-properties.onrender.com/api/",
 });
+
 api.interceptors.request.use(
-    (config)=>{
+    (config) => {
         const token = localStorage.getItem("access");
-        if(token){
-            config.headers.Authorization =
-            `Bearer ${token}`;
+
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
         }
+
         return config;
     },
-    (error)=>{
+    (error) => {
         return Promise.reject(error);
     }
 );
+
 export default api;
